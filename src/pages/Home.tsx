@@ -14,21 +14,21 @@ const heroSlides = [
 /* ── Box card data (MAFF-style grid) ── */
 const boxes: BoxProps[] = [
   {
-    to: '/message#vision',
+    to: '/vision',
     img: '/images/top/mezasu-mirai.png',
     cat: '未来に向けて',
     catColor: 'bg-green-600',
     title: '全農の目指す姿\n2030ビジョン',
   },
   {
-    to: '/about#business',
+    to: '/business',
     img: '/images/top/about.png',
     cat: '事業を知る',
     catColor: 'bg-green-600',
     title: '事業紹介',
   },
   {
-    to: '/message#top-message',
+    to: '/top-message',
     img: '/images/special01/kv.jpg',
     cat: '未来に向けて',
     catColor: 'bg-emerald-700',
@@ -36,14 +36,14 @@ const boxes: BoxProps[] = [
     objectPos: 'right',
   },
   {
-    to: '/about#projects',
+    to: '/projects',
     img: '/images/biz/jigyou_img01.jpg',
     cat: '事業を知る',
     catColor: 'bg-green-800',
     title: '担当するプロジェクト',
   },
   {
-    to: '/about#3r',
+    to: '/3r',
     img: '/images/top/message-icon.png',
     cat: '事業を知る',
     catColor: 'bg-teal-600',
@@ -51,21 +51,21 @@ const boxes: BoxProps[] = [
     square: true,
   },
   {
-    to: '/people#interviews',
+    to: '/staff',
     img: '/images/member/member01.png',
     cat: '全農ひろしまで働く',
     catColor: 'bg-amber-600',
     title: '先輩社員の1日',
   },
   {
-    to: '/people#numbers',
+    to: '/data',
     img: '/images/top/data.png',
     cat: '全農ひろしまで働く',
     catColor: 'bg-sky-600',
     title: 'データで知る\nJA全農ひろしま',
   },
   {
-    to: '/recruit#benefits',
+    to: '/benefits',
     img: '/images/top/club.png',
     cat: '採用について',
     catColor: 'bg-rose-600',

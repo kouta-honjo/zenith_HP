@@ -1,6 +1,6 @@
 import { Link, Outlet, useLocation } from 'react-router-dom';
-import { Menu, X, ExternalLink, ChevronRight } from 'lucide-react';
-import { useState, useEffect } from 'react';
+import { Menu, X, ExternalLink, ChevronDown, ChevronRight } from 'lucide-react';
+import { useState, useEffect, useRef } from 'react';
 import { clsx, type ClassValue } from 'clsx';
 import { twMerge } from 'tailwind-merge';
 
@@ -8,40 +8,94 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
+const navItems = [
+  {
+    label: '未来に向けて',
+    children: [
+      { path: '/vision', label: '全農の目指す姿' },
+      { path: '/top-message', label: '全農トップメッセージ' },
+    ],
+  },
+  {
+    label: '事業を知る',
+    children: [
+      { path: '/business', label: 'JA全農ひろしまとは' },
+      { path: '/3r', label: '3-R（さん・あーる）' },
+      { path: '/projects', label: '各部署の事業内容' },
+    ],
+  },
+  {
+    label: '全農ひろしまで働く',
+    children: [
+      { path: '/staff', label: '先輩社員の1日' },
+      { path: '/data', label: 'データで知る' },
+    ],
+  },
+  {
+    label: '採用について',
+    children: [
+      { path: '/recruit', label: '採用情報' },
+      { path: '/benefits', label: '福利厚生' },
+    ],
+  },
+];
+
+function DesktopDropdown({ item }: { item: typeof navItems[number] }) {
+  const [open, setOpen] = useState(false);
+  const timeoutRef = useRef<ReturnType<typeof setTimeout>>();
+
+  const enter = () => {
+    clearTimeout(timeoutRef.current);
+    setOpen(true);
+  };
+  const leave = () => {
+    timeoutRef.current = setTimeout(() => setOpen(false), 150);
+  };
+
+  return (
+    <div className="relative" onMouseEnter={enter} onMouseLeave={leave}>
+      <button className="flex items-center gap-1 text-sm font-bold text-gray-900 hover:text-green-600 transition-colors py-2">
+        {item.label}
+        <ChevronDown className={cn('w-3.5 h-3.5 transition-transform', open && 'rotate-180')} />
+      </button>
+      {open && (
+        <div className="absolute top-full left-1/2 -translate-x-1/2 pt-2 z-50">
+          <div className="bg-white rounded-xl shadow-xl border border-gray-100 py-2 min-w-[220px]">
+            {item.children.map((child) => (
+              <Link
+                key={child.path}
+                to={child.path}
+                onClick={() => setOpen(false)}
+                className="flex items-center gap-2 px-5 py-3 text-sm text-gray-700 hover:bg-green-50 hover:text-green-700 transition-colors"
+              >
+                <ChevronRight className="w-3.5 h-3.5 text-green-500" />
+                {child.label}
+              </Link>
+            ))}
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
+
 export default function Layout() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [mobileExpanded, setMobileExpanded] = useState<string | null>(null);
   const location = useLocation();
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
-    };
+    const handleScroll = () => setIsScrolled(window.scrollY > 20);
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Close mobile menu and handle hash scroll on route change
   useEffect(() => {
     setMobileMenuOpen(false);
-    if (location.hash) {
-      setTimeout(() => {
-        const element = document.getElementById(location.hash.slice(1));
-        if (element) {
-          element.scrollIntoView({ behavior: 'smooth' });
-        }
-      }, 100);
-    } else {
-      window.scrollTo(0, 0);
-    }
+    setMobileExpanded(null);
+    window.scrollTo(0, 0);
   }, [location]);
-
-  const navLinks = [
-    { path: '/message', jp: '未来に向けて' },
-    { path: '/about', jp: '事業を知る' },
-    { path: '/people', jp: '全農ひろしまで働く' },
-    { path: '/recruit', jp: '採用について' },
-  ];
 
   return (
     <div className="min-h-screen flex flex-col font-sans text-gray-800">
@@ -56,25 +110,13 @@ export default function Layout() {
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center">
           <Link to="/" className="flex items-center gap-2 group">
-            <img
-              src="/images/common/logo.png"
-              alt="JA全農ひろしま"
-              className="h-10 w-auto"
-            />
+            <img src="/images/common/logo.png" alt="JA全農ひろしま" className="h-10 w-auto" />
           </Link>
 
           {/* Desktop Nav */}
-          <nav className="hidden md:flex items-center gap-8">
-            {navLinks.map((link) => (
-              <Link
-                key={link.jp}
-                to={link.path}
-                className="group flex flex-col items-center"
-              >
-                <span className="text-sm font-bold text-gray-900 group-hover:text-green-600 transition-colors">
-                  {link.jp}
-                </span>
-              </Link>
+          <nav className="hidden md:flex items-center gap-6">
+            {navItems.map((item) => (
+              <DesktopDropdown key={item.label} item={item} />
             ))}
             <a
               href="https://www.zennoh.or.jp/hr/recruit/entry/"
@@ -98,21 +140,32 @@ export default function Layout() {
 
         {/* Mobile Nav */}
         {mobileMenuOpen && (
-          <div className="md:hidden absolute top-full left-0 right-0 bg-white shadow-xl border-t border-gray-100">
+          <div className="md:hidden absolute top-full left-0 right-0 bg-white shadow-xl border-t border-gray-100 max-h-[80vh] overflow-y-auto">
             <nav className="flex flex-col p-4">
-              {navLinks.map((link) => (
-                <Link
-                  key={link.jp}
-                  to={link.path}
-                  className="flex items-center justify-between py-4 border-b border-gray-100"
-                >
-                  <div className="flex flex-col">
-                    <span className="font-bold text-gray-900">
-                      {link.jp}
-                    </span>
-                  </div>
-                  <ChevronRight className="w-5 h-5 text-gray-400" />
-                </Link>
+              {navItems.map((item) => (
+                <div key={item.label} className="border-b border-gray-100">
+                  <button
+                    onClick={() => setMobileExpanded(mobileExpanded === item.label ? null : item.label)}
+                    className="flex items-center justify-between w-full py-4"
+                  >
+                    <span className="font-bold text-gray-900">{item.label}</span>
+                    <ChevronDown className={cn('w-5 h-5 text-gray-400 transition-transform', mobileExpanded === item.label && 'rotate-180')} />
+                  </button>
+                  {mobileExpanded === item.label && (
+                    <div className="pb-3 pl-4 flex flex-col gap-1">
+                      {item.children.map((child) => (
+                        <Link
+                          key={child.path}
+                          to={child.path}
+                          className="flex items-center gap-2 py-2.5 text-sm text-gray-600 hover:text-green-600"
+                        >
+                          <ChevronRight className="w-3.5 h-3.5 text-green-500" />
+                          {child.label}
+                        </Link>
+                      ))}
+                    </div>
+                  )}
+                </div>
               ))}
               <a
                 href="https://www.zennoh.or.jp/hr/recruit/entry/"
@@ -149,10 +202,13 @@ export default function Layout() {
             <div>
               <h3 className="font-bold mb-4 text-green-400">CONTENTS</h3>
               <ul className="space-y-2 text-sm text-gray-300">
-                <li><Link to="/message" className="hover:text-white transition-colors">未来に向けて (Message)</Link></li>
-                <li><Link to="/about" className="hover:text-white transition-colors">事業を知る (About)</Link></li>
-                <li><Link to="/people" className="hover:text-white transition-colors">全農ひろしまで働く (People)</Link></li>
-                <li><Link to="/recruit" className="hover:text-white transition-colors">採用について (Recruit)</Link></li>
+                {navItems.flatMap((item) =>
+                  item.children.map((child) => (
+                    <li key={child.path}>
+                      <Link to={child.path} className="hover:text-white transition-colors">{child.label}</Link>
+                    </li>
+                  ))
+                )}
               </ul>
             </div>
             <div>
