@@ -1,304 +1,250 @@
 import { Link } from 'react-router-dom';
-import { ArrowRight, ChevronRight } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import { motion } from 'motion/react';
+import { useState, useEffect, useCallback } from 'react';
 
-export default function Home() {
-  return (
-    <div className="w-full">
-      {/* ===== Hero Section ===== */}
-      <section className="relative h-[90vh] w-full overflow-hidden">
+/* ── Hero slide data ── */
+const heroSlides = [
+  { src: '/images/top/hero1.png', alt: '広島レモンと瀬戸内海' },
+  { src: '/images/top/hero2.png', alt: '広島和牛' },
+  { src: '/images/top/hero3.png', alt: '黄金の稲穂' },
+  { src: '/images/top/hero4.jpg', alt: '世羅のたまご' },
+];
+
+/* ── Box card data (MAFF-style grid) ── */
+const boxes: BoxProps[] = [
+  {
+    to: '/message#vision',
+    img: '/images/top/mezasu-mirai.png',
+    cat: '未来に向けて',
+    catColor: 'bg-green-600',
+    title: '全農の目指す姿\n2030ビジョン',
+  },
+  {
+    to: '/about#business',
+    img: '/images/top/about.png',
+    cat: '事業を知る',
+    catColor: 'bg-green-600',
+    title: '事業紹介',
+  },
+  {
+    to: '/message#top-message',
+    img: '/images/special01/kv.jpg',
+    cat: '未来に向けて',
+    catColor: 'bg-emerald-700',
+    title: '全農トップメッセージ',
+    objectPos: 'right',
+  },
+  {
+    to: '/about#projects',
+    img: '/images/biz/jigyou_img01.jpg',
+    cat: '事業を知る',
+    catColor: 'bg-green-800',
+    title: '担当するプロジェクト',
+  },
+  {
+    to: '/about#3r',
+    img: '/images/top/message-icon.png',
+    cat: '事業を知る',
+    catColor: 'bg-teal-600',
+    title: '耕畜連携・資源循環\n3-R（さん・あーる）',
+    square: true,
+  },
+  {
+    to: '/people#interviews',
+    img: '/images/member/member01.png',
+    cat: '全農ひろしまで働く',
+    catColor: 'bg-amber-600',
+    title: '先輩社員の1日',
+  },
+  {
+    to: '/people#numbers',
+    img: '/images/top/data.png',
+    cat: '全農ひろしまで働く',
+    catColor: 'bg-sky-600',
+    title: 'データで知る\nJA全農ひろしま',
+  },
+  {
+    to: '/recruit#benefits',
+    img: '/images/top/club.png',
+    cat: '採用について',
+    catColor: 'bg-rose-600',
+    title: '充実した\n社会人生活のために',
+  },
+  {
+    href: 'https://zennoh-recruit.jp/index.html',
+    img: '/images/top/mv.png',
+    cat: '採用について',
+    catColor: 'bg-red-600',
+    title: 'エントリーは\nこちらから',
+  },
+];
+
+/* ── Types ── */
+interface BoxProps {
+  to?: string;
+  href?: string;
+  img: string;
+  cat: string;
+  catColor: string;
+  title: string;
+  square?: boolean;
+  objectPos?: string;
+}
+
+/* ── Reusable Box Card (MAFF style) ── */
+function BoxCard({ to, href, img, cat, catColor, title, square, objectPos, className = '' }: BoxProps & { className?: string }) {
+  const inner = (
+    <>
+      {/* Image with gradient overlay */}
+      <div className={`absolute inset-0 rounded-[15px] overflow-hidden ${square ? 'bg-white' : ''}`}>
         <img
-          src="/images/top/mv.png"
-          alt="JA全農ひろしま 採用情報"
-          className="absolute inset-0 w-full h-full object-cover"
+          src={img}
+          alt={title.replace('\n', ' ')}
+          className={`w-full h-full transition-transform duration-500 group-hover:scale-105 ${square ? 'object-contain p-6' : 'object-cover'}`}
+          style={objectPos ? { objectPosition: objectPos } : undefined}
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/30 to-transparent" />
-        <div className="relative h-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col justify-center">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="max-w-3xl"
+        {!square && <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />}
+      </div>
+
+      {/* Category label (top-left) */}
+      <span className={`absolute top-0 left-0 ${catColor} text-white text-xs font-bold px-4 py-2 rounded-br-xl rounded-tl-[15px] z-10`}>
+        {cat}
+      </span>
+
+      {/* Title (bottom-left) */}
+      <span className={`absolute bottom-5 left-5 font-bold text-lg md:text-xl leading-snug whitespace-pre-line z-10 ${square ? 'text-gray-800' : 'text-white drop-shadow-lg'}`}>
+        {title}
+      </span>
+
+      {/* Arrow mark (bottom-right) */}
+      <span className="absolute bottom-4 right-4 w-10 h-10 bg-green-600 rounded-full flex items-center justify-center z-10 transition-transform duration-300 group-hover:scale-110">
+        <ArrowRight className="w-5 h-5 text-white" />
+      </span>
+    </>
+  );
+
+  const sharedClass = `group relative block ${className}`;
+
+  if (href) {
+    return (
+      <a href={href} target="_blank" rel="noopener noreferrer" className={sharedClass}>
+        {inner}
+      </a>
+    );
+  }
+  return (
+    <Link to={to!} className={sharedClass}>
+      {inner}
+    </Link>
+  );
+}
+
+/* ── Main Component ── */
+export default function Home() {
+  const [current, setCurrent] = useState(0);
+  const len = heroSlides.length;
+
+  const next = useCallback(() => setCurrent(c => (c + 1) % len), [len]);
+
+  // Auto-advance every 5s
+  useEffect(() => {
+    const id = setInterval(next, 5000);
+    return () => clearInterval(id);
+  }, [next]);
+
+  return (
+    <div className="w-full bg-white">
+      {/* ═══════ Hero Carousel (fade) ═══════ */}
+      <section className="relative w-full overflow-hidden" style={{ aspectRatio: '2816 / 1536' }}>
+        {/* Stacked slides — only current one is visible */}
+        {heroSlides.map((s, i) => (
+          <div
+            key={i}
+            className="absolute inset-0 transition-opacity duration-1000 ease-in-out"
+            style={{ opacity: i === current ? 1 : 0 }}
           >
-            <p className="text-white/80 text-sm tracking-[0.3em] mb-4 font-medium">
-              明日の農に挑戦する
-            </p>
-            <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold text-white leading-tight mb-6 tracking-tight">
+            <img src={s.src} alt={s.alt} className="w-full h-full object-cover" />
+            <div className="absolute inset-0 bg-gradient-to-r from-black/40 via-transparent to-transparent" />
+          </div>
+        ))}
+
+        {/* Hero text overlay — only the main tagline */}
+        <div className="absolute inset-0 flex items-end pointer-events-none pb-16 md:pb-20">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+            <motion.h1
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+              className="text-4xl md:text-6xl lg:text-7xl font-bold text-white leading-tight tracking-tight drop-shadow-xl"
+            >
               食と農を
               <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-emerald-300">
-                未来へつなぐ。
-              </span>
-            </h1>
-            <p className="text-white/70 text-lg mb-10 max-w-xl leading-relaxed">
-              JA全農ひろしまの採用情報ページです。
-              <br />
-              私たちと一緒に、広島の食と農業の未来をつくりませんか。
-            </p>
-            <a
-              href="https://zennoh-recruit.jp/index.html"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-3 bg-green-600 hover:bg-green-500 text-white px-8 py-4 rounded-full font-bold text-lg transition-all shadow-lg hover:shadow-green-600/30"
-            >
-              ENTRY
-              <ArrowRight className="w-5 h-5" />
-            </a>
-          </motion.div>
+              未来へつなぐ。
+            </motion.h1>
+          </div>
         </div>
+
+        {/* Dot indicators */}
+        <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-3 z-10">
+          {heroSlides.map((_, i) => (
+            <button
+              key={i}
+              onClick={() => setCurrent(i)}
+              className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                i === current ? 'bg-white scale-125' : 'bg-white/40 hover:bg-white/70'
+              }`}
+              aria-label={`Slide ${i + 1}`}
+            />
+          ))}
+        </div>
+
+        {/* Prev / Next arrows */}
+        <button
+          onClick={() => setCurrent(c => (c - 1 + len) % len)}
+          className="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-black/30 hover:bg-black/50 rounded-full flex items-center justify-center text-white transition-colors z-10"
+          aria-label="Previous"
+        >
+          <ArrowRight className="w-6 h-6 rotate-180" />
+        </button>
+        <button
+          onClick={next}
+          className="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-black/30 hover:bg-black/50 rounded-full flex items-center justify-center text-white transition-colors z-10"
+          aria-label="Next"
+        >
+          <ArrowRight className="w-6 h-6" />
+        </button>
       </section>
 
-      {/* ===== Section 1: 全農の目指す姿（2030ビジョン） ===== */}
-      <section className="py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-            <div>
-              <p className="text-green-600 font-bold text-sm tracking-widest mb-2">01 MESSAGE</p>
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6 leading-tight">
-                全農の目指す姿
-                <br />
-                <span className="text-green-700">2030ビジョン</span>
-              </h2>
-              <p className="text-gray-600 leading-relaxed mb-8">
-                持続可能な食料・農業基盤の確立を通じ、豊かで暮らしやすい地域共生社会を実現。
-                2030年の目指す姿を「持続可能な農業と食の提供のために"なくてはならない全農"であり続ける」と定めました。
-              </p>
-              <Link
-                to="/message#vision"
-                className="inline-flex items-center gap-2 bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-full font-bold text-sm transition-all"
-              >
-                詳しく見る <ChevronRight className="w-4 h-4" />
-              </Link>
-            </div>
-            <div className="rounded-2xl overflow-hidden shadow-xl">
-              <img src="/images/top/message-icon.png" alt="2030ビジョン" className="w-full h-auto" />
-            </div>
-          </div>
-        </div>
-      </section>
+      {/* ═══════ MAFF-style Box Grid ═══════ */}
+      <article className="max-w-[1400px] mx-auto px-[3%] py-8 flex flex-col gap-4">
 
-      {/* ===== Section 2: TOPメッセージ ===== */}
-      <section className="py-24 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-            <div className="order-2 md:order-1 rounded-2xl overflow-hidden shadow-xl">
-              <img src="/images/zennoh/top_message.jpg" alt="トップメッセージ" className="w-full h-auto" />
-            </div>
-            <div className="order-1 md:order-2">
-              <p className="text-green-600 font-bold text-sm tracking-widest mb-2">02 TOP MESSAGE</p>
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6 leading-tight">
-                これからも、
-                <br />
-                生産者と消費者を安心で
-                <br />
-                結ぶ確かな懸け橋であるために。
-              </h2>
-              <p className="text-gray-600 leading-relaxed mb-8">
-                私たちは経営理念である「生産者と消費者を安心で結ぶ懸け橋」としての機能・役割を誠実に実践し、
-                日本の食を国民の皆様にお届けするため日々事業を展開しております。
-              </p>
-              <Link
-                to="/message#top-message"
-                className="inline-flex items-center gap-2 bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-full font-bold text-sm transition-all"
-              >
-                メッセージを読む <ChevronRight className="w-4 h-4" />
-              </Link>
-            </div>
-          </div>
+        {/* ─── Row 1: MESSAGE (large 59%) + BUSINESS (40%) ─── */}
+        <div className="flex flex-col md:flex-row gap-4" style={{ minHeight: 500 }}>
+          <BoxCard {...boxes[0]} className="w-full md:w-[59%] h-[400px] md:h-auto" />
+          <BoxCard {...boxes[1]} className="w-full md:w-[40%] h-[300px] md:h-auto" />
         </div>
-      </section>
 
-      {/* ===== Section 3: 事業紹介 ===== */}
-      <section className="py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <p className="text-green-600 font-bold text-sm tracking-widest mb-2">03 BUSINESS</p>
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900">事業紹介</h2>
-            <p className="text-gray-500 mt-4 max-w-2xl mx-auto">
-              JA全農ひろしまは、米穀・畜産・園芸・営農資材・生活の5事業部門と、改革推進・管理の2部門で構成されています。
-            </p>
-          </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {[
-              { title: '米穀事業', img: '/images/biz/beikoku-title.jpg', desc: '広島のお米を適切な精米処理・品質管理を通じて消費者の皆さまへお届けします。' },
-              { title: '畜産事業', img: '/images/biz/chikusan-title.jpg', desc: '生産から販売までの一体的な事業体制で、安全・安心な畜産物をお届けしています。' },
-              { title: '園芸事業', img: '/images/biz/engei-title.jpg', desc: '生産者と実需者の橋渡し役を担い、広島県産野菜の供給を行っています。' },
-              { title: 'とれたて元気市', img: '/images/biz/genkiiti-title.jpg', desc: '生産者と消費者を直接結ぶ産直市場を運営しています。' },
-              { title: '営農支援', img: '/images/biz/einou-title.jpg', desc: '生産技術の開発・普及により、収量・品質向上をサポートしています。' },
-              { title: '各部署の事業内容', img: '/images/top/detail.png', desc: 'JA全農ひろしまの各部署の取り組みをご紹介します。' },
-            ].map((item, i) => (
-              <Link
-                key={i}
-                to="/about#business"
-                className="group relative overflow-hidden rounded-2xl bg-white shadow-md hover:shadow-xl transition-all duration-300"
-              >
-                <div className="aspect-[4/3] overflow-hidden">
-                  <img src={item.img} alt={item.title} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
-                </div>
-                <div className="p-5">
-                  <h3 className="font-bold text-lg text-gray-900 mb-2 group-hover:text-green-600 transition-colors">{item.title}</h3>
-                  <p className="text-gray-500 text-sm leading-relaxed">{item.desc}</p>
-                </div>
-              </Link>
-            ))}
-          </div>
-          <div className="text-center mt-10">
-            <Link to="/about#business" className="inline-flex items-center gap-2 bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-full font-bold text-sm transition-all">
-              事業紹介をもっと見る <ChevronRight className="w-4 h-4" />
-            </Link>
-          </div>
+        {/* ─── Row 2: TOP MESSAGE + 3-R (square) + PROJECTS ─── */}
+        <div className="flex flex-col md:flex-row gap-4" style={{ minHeight: 480 }}>
+          {/* TOP MESSAGE */}
+          <BoxCard {...boxes[2]} className="w-full md:w-[35%] h-[350px] md:h-auto" />
+          {/* 3-R (square, logo) - 事業を知るに統合 */}
+          <BoxCard {...boxes[4]} className="w-full md:w-[30%] aspect-square md:aspect-auto md:h-auto" />
+          {/* PROJECTS */}
+          <BoxCard {...boxes[3]} className="w-full md:w-[35%] h-[350px] md:h-auto" />
         </div>
-      </section>
 
-      {/* ===== Section 4: 担当するプロジェクト ===== */}
-      <section className="py-24 bg-green-900 text-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-            <div>
-              <p className="text-green-300 font-bold text-sm tracking-widest mb-2">04 PROJECTS</p>
-              <h2 className="text-3xl md:text-4xl font-bold mb-6 leading-tight">担当するプロジェクト</h2>
-              <p className="text-green-100/80 leading-relaxed mb-8">
-                JA全農ひろしまでは、若手職員でも大きなプロジェクトに携わることができます。広島県の農業を支える多様なプロジェクトをご紹介します。
-              </p>
-              <Link to="/about#projects" className="inline-flex items-center gap-2 bg-white text-green-900 hover:bg-green-100 px-6 py-3 rounded-full font-bold text-sm transition-all">
-                プロジェクトを見る <ChevronRight className="w-4 h-4" />
-              </Link>
-            </div>
-            <div className="grid grid-cols-2 gap-4">
-              {['/images/biz/jigyou_img01.jpg', '/images/biz/jigyou_img03.jpg', '/images/biz/jigyou_img05.jpg', '/images/biz/jigyou_img07.jpg'].map((src, i) => (
-                <div key={i} className="rounded-xl overflow-hidden">
-                  <img src={src} alt="プロジェクト" className="w-full h-40 object-cover" />
-                </div>
-              ))}
-            </div>
-          </div>
+        {/* ─── Row 3: PEOPLE + DATA + BENEFITS ─── */}
+        <div className="flex flex-col sm:flex-row gap-4">
+          <BoxCard {...boxes[5]} className="w-full sm:w-1/3 h-[300px]" />
+          <BoxCard {...boxes[6]} className="w-full sm:w-1/3 h-[300px]" />
+          <BoxCard {...boxes[7]} className="w-full sm:w-1/3 h-[300px]" />
         </div>
-      </section>
 
-      {/* ===== Section 5: 3-R活動 ===== */}
-      <section className="py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-            <div className="rounded-2xl overflow-hidden shadow-xl">
-              <img src="/images/message/message01.png" alt="3-R活動" className="w-full h-auto" />
-            </div>
-            <div>
-              <p className="text-green-600 font-bold text-sm tracking-widest mb-2">05 SUSTAINABILITY</p>
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6 leading-tight">
-                耕畜連携・資源循環ブランド
-                <br />
-                <span className="text-green-700">「３-Ｒ（さん・あーる）」</span>
-              </h2>
-              <p className="text-gray-600 leading-relaxed mb-4">
-                畜産業で出た堆肥を「資源（RESOURCE）」として「再利用（RECYCLING）」する資源循環・耕畜連携の取り組みを
-                「繰り返し（REPEAT）」ていくことで、地域の環境保全と持続可能な農業を目指しています。
-              </p>
-              <Link to="/about#3r" className="inline-flex items-center gap-2 bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-full font-bold text-sm transition-all">
-                3-R活動について <ChevronRight className="w-4 h-4" />
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ===== Section 6: 職員紹介 ===== */}
-      <section className="py-24 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <p className="text-green-600 font-bold text-sm tracking-widest mb-2">06 PEOPLE</p>
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900">先輩職員のある1日をご紹介</h2>
-            <p className="text-gray-500 mt-4">さまざまな部署で活躍する職員たちの声をお届けします。</p>
-          </div>
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
-            {[
-              { name: '若林 崚太', dept: '改革推進部', year: '2022年入会', img: '/images/member/member01.png' },
-              { name: '青木 菜月', dept: '改革推進部', year: '2025年入会', img: '/images/member/member02.png' },
-              { name: '松本 美桜', dept: '管理部', year: '2022年入会', img: '/images/member/member05.png' },
-              { name: '沖原 孝衣', dept: '米穀部', year: '2023年入会', img: '/images/member/member03.png' },
-              { name: '寺尾 匡平', dept: '米穀部', year: '2022年入会', img: '/images/member/member04.png' },
-            ].map((m, i) => (
-              <Link key={i} to="/people#interviews" className="group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-all">
-                <div className="aspect-[3/4] overflow-hidden">
-                  <img src={m.img} alt={m.name} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
-                </div>
-                <div className="p-3 text-center">
-                  <p className="font-bold text-sm text-gray-900">{m.name}</p>
-                  <p className="text-xs text-green-600 mt-1">{m.dept}</p>
-                  <p className="text-xs text-gray-400">{m.year}</p>
-                </div>
-              </Link>
-            ))}
-          </div>
-          <div className="text-center mt-10">
-            <Link to="/people#interviews" className="inline-flex items-center gap-2 bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-full font-bold text-sm transition-all">
-              職員紹介をもっと見る <ChevronRight className="w-4 h-4" />
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* ===== Section 7: データで知る ===== */}
-      <section className="py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <p className="text-green-600 font-bold text-sm tracking-widest mb-2">07 DATA</p>
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900">データで知るJA全農ひろしま</h2>
-          </div>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-            {['01', '02', '03', '04', '05', '06', '09'].map((n, i) => (
-              <div key={i} className="rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-all">
-                <img src={`/images/data/data-item${n}.png`} alt={`データ${i + 1}`} className="w-full h-auto" />
-              </div>
-            ))}
-          </div>
-          <div className="text-center mt-10">
-            <Link to="/people#numbers" className="inline-flex items-center gap-2 bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-full font-bold text-sm transition-all">
-              データをもっと見る <ChevronRight className="w-4 h-4" />
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* ===== Section 8: 福利厚生 ===== */}
-      <section className="py-24 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-            <div>
-              <p className="text-green-600 font-bold text-sm tracking-widest mb-2">08 BENEFITS</p>
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6 leading-tight">充実した社会人生活のために</h2>
-              <p className="text-gray-600 leading-relaxed mb-8">
-                週休2日制、各種手当、OJT研修制度、療養費補助（年30万円限度）など、
-                職員一人ひとりが安心して働ける環境を整備しています。
-                野球部・フットサル同好会・駅伝愛好会などのクラブ活動も充実。
-              </p>
-              <Link to="/recruit#benefits" className="inline-flex items-center gap-2 bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-full font-bold text-sm transition-all">
-                福利厚生を見る <ChevronRight className="w-4 h-4" />
-              </Link>
-            </div>
-            <div className="rounded-2xl overflow-hidden shadow-xl">
-              <img src="/images/top/club.png" alt="福利厚生・クラブ活動" className="w-full h-auto" />
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ===== CTA Banner ===== */}
-      <section className="py-20 bg-gradient-to-r from-green-800 to-green-600 text-white text-center">
-        <div className="max-w-3xl mx-auto px-4">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">エントリーはこちらから</h2>
-          <p className="text-green-100 mb-10">JA全農ひろしまで、食と農の未来を一緒につくりましょう。</p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="https://zennoh-recruit.jp/index.html" target="_blank" rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-3 bg-white text-green-800 px-8 py-4 rounded-full font-bold text-lg transition-all shadow-lg hover:shadow-xl hover:bg-green-50">
-              JA全農 採用情報 <ArrowRight className="w-5 h-5" />
-            </a>
-            <a href="https://zennoh-recruit.jp/recruit/index/" target="_blank" rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-3 border-2 border-white text-white px-8 py-4 rounded-full font-bold text-lg transition-all hover:bg-white/10">
-              募集要項 <ArrowRight className="w-5 h-5" />
-            </a>
-          </div>
-        </div>
-      </section>
+        {/* ─── Row 4: Full-width ENTRY CTA ─── */}
+        <BoxCard {...boxes[8]} className="w-full h-[250px]" />
+      </article>
     </div>
   );
 }

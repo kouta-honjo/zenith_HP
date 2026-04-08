@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>全農トップメッセージ</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700&family=Montserrat&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Noto Sans JP', 'Hiragino Kaku Gothic ProN', sans-serif; color: #333; background: #fff; line-height: 1.8; -webkit-font-smoothing: antialiased; }
+    img { max-width: 100%; height: auto; display: block; }
+
+    /* KV */
+    .p-kv { position: relative; }
+    .p-kv__bg { width: 100%; }
+    .p-kv__title { position: absolute; bottom: 104px; left: 50px; }
+    .p-kv__title h1 { font-family: 'Noto Serif JP', serif; color: #fff; font-size: 52px; font-weight: bold; line-height: 1.3; text-shadow: 0 3px 6px rgba(0,0,0,0.16); }
+    .p-kv__title img { width: 483px; display: block; margin-top: 40px; }
+
+    /* Profile */
+    .p-profile { padding: 60px 0; }
+    .p-profile__inner { max-width: 800px; width: 100%; margin: 0 auto; display: flex; justify-content: space-between; align-items: flex-start; }
+    .p-profile__name { flex-shrink: 0; }
+    .p-profile__name__en { font-size: 16px; line-height: 1.5; font-weight: 400; }
+    .p-profile__name__ja { font-size: 40px; font-weight: bold; line-height: 1.45; }
+    .p-profile__name__ceo { font-size: 16px; font-weight: bold; line-height: 1.5; margin-top: 15px; display: block; }
+    .p-profile__text { font-size: 14px; font-weight: 400; line-height: 1.71; letter-spacing: 0.03em; width: 400px; flex-shrink: 0; }
+
+    /* Message */
+    .p-message { position: relative; z-index: 0; background: url("/images/special01/message-bg.jpg") no-repeat center center/cover; padding: 120px 0; }
+    .p-message__inner { position: relative; max-width: 1010px; width: 100%; padding: 80px 105px 200px; margin: 0 auto; z-index: 2; box-shadow: 10px 10px 20px rgba(0,0,0,0.5); }
+    .p-message__inner::before { z-index: -1; content: ''; width: 100%; height: 100%; position: absolute; top: 0; left: 0; opacity: 0.4; background-image: url("/images/special01/message-bg02.png"); background-repeat: no-repeat; background-position: center center; background-size: cover; }
+    .p-message__inner::after { z-index: -2; content: ''; width: 100%; height: 100%; position: absolute; top: 0; left: 0; opacity: 0.5; background-color: #fff; }
+    .p-message h2 { width: 142px; margin: 0 auto 60px; }
+    .p-message h2 img { width: 100%; }
+    .p-message p { font-size: 18px; font-weight: bold; line-height: 1.94; font-family: 'Noto Serif JP', serif; margin-bottom: 30px; }
+    .p-message p:last-of-type { margin-bottom: 0; }
+    .p-message__image { width: 155px; position: absolute; bottom: 30px; right: 30px; }
+
+    /* Words */
+    .p-words { padding: 120px 0; }
+    .p-words__inner { max-width: 1010px; width: 100%; margin: 0 auto; }
+    .p-words__title__small { font-size: 18px; font-weight: 400; line-height: 1.44; }
+    .p-words__title__box { font-size: 18px; font-weight: 400; line-height: 1.44; border: 1px solid #333; padding: 0 8px; display: inline-block; margin-left: 8px; }
+    .p-words__title__big { font-size: 40px; font-weight: 400; font-family: 'Noto Serif JP', serif; margin-top: 24px; display: block; position: relative; }
+    .p-words__title__big::before { content: ''; width: 450px; height: 1px; background-color: #333; position: absolute; right: 0; top: 50%; transform: translateY(-50%); }
+    .p-words__contents { display: flex; justify-content: space-between; align-items: flex-start; gap: 50px; margin-top: 50px; }
+    .p-words__contents__text p { font-size: 15px; font-weight: 400; letter-spacing: 0.03em; line-height: 2; margin-bottom: 30px; }
+    .p-words__contents__text p:last-child { margin-bottom: 0; }
+    .p-words__contents img { width: 480px; flex-shrink: 0; }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .p-kv__title { left: 4.3%; bottom: 8%; }
+      .p-kv__title h1 { font-size: 22px; }
+      .p-kv__title img { max-width: 483px; width: 50%; margin-top: 10px; }
+      .p-profile { padding: 30px 0; }
+      .p-profile__inner { padding: 0 4.3%; flex-wrap: wrap; }
+      .p-profile__name__en { font-size: 12px; }
+      .p-profile__name__ja { font-size: 28px; }
+      .p-profile__name__ceo { margin-top: 0; font-size: 14px; }
+      .p-profile__text { width: 100%; margin-top: 20px; }
+      .p-message { padding: 60px 4.3%; }
+      .p-message__inner { padding: 40px 4.3% 120px; }
+      .p-message h2 { width: 100px; margin-bottom: 30px; }
+      .p-message p { font-size: 14px; }
+      .p-message__image { width: 100px; bottom: 10px; right: 10px; }
+      .p-words { padding: 50px 0; }
+      .p-words__inner { padding: 0 4.3%; }
+      .p-words__title__small { font-size: 12px; }
+      .p-words__title__box { font-size: 12px; }
+      .p-words__title__big { font-size: 24px; }
+      .p-words__title__big::before { display: none; }
+      .p-words__contents { flex-wrap: wrap; margin-top: 30px; gap: 30px; }
+      .p-words__contents__text { order: 1; }
+      .p-words__contents__text p { font-size: 14px; margin-bottom: 15px; }
+      .p-words__contents img { width: 100%; order: 2; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <div class="p-kv">
+      <div class="p-kv__title">
+        <h1>食と農を未来へつなぐ<br>ともに。</h1>
+        <p><img src="/images/special01/kv-title.svg" alt="Letter from President & CEO"></p>
+      </div>
+      <img class="p-kv__bg" src="/images/special01/kv.jpg" alt="">
+    </div>
+
+    <section class="p-profile">
+      <div class="p-profile__inner">
+        <div class="p-profile__name">
+          <span class="p-profile__name__en">Yoshifumi Kuwada</span><br>
+          <span class="p-profile__name__ja">桑田 義文</span><br>
+          <span class="p-profile__name__ceo">代表理事理事長</span>
+        </div>
+        <p class="p-profile__text">1983年入会。長らく飼料畜産事業を担当し、九州、東海、四国地方などで現場経験を積む。なかでも飼料会社に出向し、静岡県全域の畜産農家と一緒に汗を流した5年間が、職業人としての自らを形成したと振り返る。畜産生産部総合課長、畜産生産部長、畜産総合対策部長、常務理事を経て、2019年に代表理事専務に就任。2024年より現職。</p>
+      </div>
+    </section>
+
+    <section class="p-message">
+      <div class="p-message__inner">
+        <h2><img src="/images/special01/message-title.svg" alt="Message"></h2>
+        <p>JA全農は半世紀以上にわたり、日本の農業と食を支える役割の一端を担ってきました。しかし今、人口減少にともなう食糧需要の減少よりも先に、農業生産基盤そのものが崩壊しかねないという冷徹な現実が迫っていることを、私たちは重く受け止めています。</p>
+        <p>そうした状況にあって、私たちは先人から受け継いだ「安定した原料調達力」、「農畜産物の販売力」、「技術開発力」、「商品開発力」、「インフラ力」など、持ちあわせている多様な機能をさらに強固なものとし、さらに時代に合った新たな機能を創造し、未来の日本の農業と食を支えていかなければなりません。</p>
+        <p>JA全農は農家のためにある農業協同組合であり、株式会社ではありません。一人ひとりの職員が一人ひとりの農家の傍にあって、農家のために懸命に汗をかく組織です。そうした熱意ある職員が多くいることが全農の強さの源泉であり、事業の支えとなっています。組織の力量は、そこで働く人の力の総和であり、組織が強くなるということは、そこで働く個々の人が強くなることであると私はおもいます。</p>
+        <p>熱意ある人と一緒に働きたい、私はいつもそう願っています。熱意を持つことに特別な才能などは必要ありません。熱意は頻度にあらわれ、頻度が人の感動を呼び、感動が人を動かし、事業を成功へと導くのだとおもいます。私はこのことを家畜市場の駐在員時代に学びました。数え切れない農家訪問が、三流だった私を少しはましな職業人へと成長させてくれました。</p>
+        <p>年に一度しか来ない一流の推進員と、毎週来てくれる三流の推進員。農家はどちらを好きになり、そして選んでくれるでしょうか。私は迷わず後者であると答えます。最初は追い返された農家も、最後は家族となり、私のために茶碗と箸を用意してくれました。茶碗と箸が私の勲章です。</p>
+        <p>特別な経験、幅広い知識、優れた技能、どれもみなあればあるに越したことはないでしょうが、そのようなものがなくても、熱意を持って目の前の農家・会員JA・お取引先と向き合える人、未来の日本の農業と食を支えたいと強く願っている人、そんな人がJA全農の門をたたいてくれたらとてもうれしいです。</p>
+        <img class="p-message__image" src="/images/special01/pen.png" alt="">
+      </div>
+    </section>
+
+    <section class="p-words">
+      <div class="p-words__inner">
+        <h2 class="p-words__title">
+          <span class="p-words__title__small">自身の経験から</span><span class="p-words__title__box">私が大切にしている言葉</span><br>
+          <span class="p-words__title__big">心にだけは白いゴム長靴を履く</span>
+        </h2>
+        <div class="p-words__contents">
+          <div class="p-words__contents__text">
+            <p>1983 年に入会して以降、理事になるまでのほとんどの期間、私は国内の飼料畜産事業にかかわってきました。原料調達・配合飼料物流・製品管理・県域推進業務・為替購買・飼料会社での農家営業など、担当した業務は多岐にわたります。</p>
+            <p>入会して間もないころのことです。あるグループ会社役員の方が退任挨拶のため私の職場を訪れ、私を見つけて、「君は新入職員だね、全農という職場は現場から遠いから、きっと馬鹿にされることも多いだろう、でもね、心にだけは白いゴム長靴を履いて仕事をしてほしい」と声をかけてくださいました。当時のJAグループは、JA・経済連・全農の組織３段階の時代で、全農は現場から一番遠い存在でした。現場知らずの全農と揶揄されることも多く、悔しいおもいをする毎日でした。その日から「心にだけは白いゴム長靴を履く」は私の大切な言葉となりました。</p>
+            <p>40年以上のキャリアのなかで、職業人としての背骨となり根っことなったのが、家畜市場に駐在し、朝から晩まで農家と牛を追いかけた30 代前半の5年間です。ちょうどこの時期は、北海道の素牛市場で和牛肥育素牛を10 頭購入し、農家に預けて牛を実地で学んだ時期とも重なります。</p>
+          </div>
+          <img src="/images/special01/img01.jpg" alt="">
+        </div>
+        <div class="p-words__contents">
+          <img src="/images/special01/img02.jpg" alt="">
+          <div class="p-words__contents__text">
+            <p>家畜市場駐在時代のスタートは厳しい日々の連続でした。配合飼料の販売促進が私の任務でしたが、「農協のえさは高い」と言われ続け、毎日心が折れそうでした。悩み抜いた末に、自分の付加価値を織り込んで、農家に高いか安いか判断してもらうことにしました。まずは農家との接点を増やすため、担当するすべての農家と週2回会うことを自らのノルマにしました。</p>
+            <p>最初は農家のお手伝いが私の付加価値でした。体重測定・角切・爪切り・去勢の手伝い、家族旅行の間のえさ給与など、なんでもやりました。やがて農家と農家の牛が私に経験と知恵を授け、生産指導のまね事ができるようになり、牛が高く売れ、私の付加価値となりました。頻度は嘘をつきません。私が販売する配合飼料には価格以上の付加価値があると評価していただけるようになりました。</p>
+            <p>職場はいろいろです。現場から遠い職場もあります。不安を感じることもあるでしょう。そんなときは「心にだけは白いゴム長靴、黒い地下足袋を履く」とつぶやいてほしいです。今の仕事が農家につながっていることに自信と誇りを持って。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    function notifyHeight() {
+      var h = document.documentElement.scrollHeight;
+      window.parent.postMessage({ type: 'resize', height: h }, '*');
+    }
+    window.addEventListener('load', notifyHeight);
+    window.addEventListener('resize', notifyHeight);
+    new MutationObserver(notifyHeight).observe(document.body, { childList: true, subtree: true });
+  </script>
+</body>
+</html>

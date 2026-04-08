@@ -21,9 +21,9 @@ export default function Message() {
         </div>
       </div>
 
-      {/* Original Content: 目指す姿 */}
-      <div id="vision">
-        <OriginalPage src="/pages/message.html" title="目指す姿" />
+      {/* Original Content: 全農トップメッセージ */}
+      <div id="top-message">
+        <OriginalPage src="/pages/special01.html" title="全農トップメッセージ" />
       </div>
     </div>
   );
