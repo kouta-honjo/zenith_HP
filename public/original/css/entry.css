@@ -1,0 +1,12 @@
+   .entry-link {
+	/*普段は隠しておく*/
+	opacity: 0;
+	visibility: hidden;
+   }
+   .entry-link.active {
+	/*activeが付いたら表示*/
+    position: fixed; 
+    opacity: 1;
+    visibility: visible;
+    z-index:999;
+   }

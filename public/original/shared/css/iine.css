@@ -1,0 +1,1085 @@
+/**************************
+Compass Text Replacement
+*/
+/**************************
+Inline List
+*/
+/**************************
+Inline Block List
+*/
+/**************************
+horizontal-list
+*/
+/**************************
+Bullets
+*/
+/* simple clearfix */
+/**************************
+@mixin for sprite
+*/
+
+.iinemap {
+	width: 750px;
+	margin: 0 auto;
+}
+
+.iinemap img {
+	max-width: 100%;
+	margin: 0 auto;
+}
+
+@media screen and (max-width: 767px) {
+.iinemap {
+	width: 100%;
+	margin: 0 auto;
+}
+}
+
+.iinemap2 {
+	width: 500px;
+	margin: 0 auto;
+}
+
+.iinemap2 img {
+	max-width: 100%;
+	margin: 0 auto;
+}
+
+@media screen and (max-width: 767px) {
+.iinemap,
+.iinemap2 {
+	width: 100%;
+	margin: 0 auto;
+}
+}
+
+.iinezatsugaku {
+	display: table;
+}
+
+.iinezatsugaku .left {
+	width: 20%;
+	margin-right: 2%;
+}
+
+.iinezatsugaku .right {
+	width: 77%;
+}
+
+.iinezatsugaku .left,
+.iinezatsugaku .right {
+	display: inline-block;
+    vertical-align: text-top;
+}
+
+@media screen and (max-width: 767px) {
+.iinezatsugaku .left {
+	width: 100%;
+	margin: 0 0 20px;
+	text-align: center;
+}
+
+.iinezatsugaku .right {
+	width: 100%;
+}
+
+.iinezatsugaku .left,
+.iinezatsugaku .right {
+	display: inline-block;
+}
+
+.iinezatsugaku img {
+	display: inline-block;
+}
+}
+
+.tokusainen {
+	margin: 0 auto;
+	text-align: center;
+}
+
+.tokusainen li {
+	background:#eb4a39;
+	width: 200px;
+	text-align:center;
+	margin:auto 20px;
+	padding-top:10px;
+	padding-bottom:10px;
+	padding-right:1em;
+	display:inline-block;
+	color:#FFFFFF;
+}
+
+.tokusainen li a {
+	color:#FFF;
+}
+
+.tokusainen li span.aki{
+	margin-left:1em;
+}
+
+
+@media screen and (max-width: 767px) {
+ul.tokusainen {
+	width:100%;
+	padding:0 auto;
+}
+.tokusainen li {
+	width: 30%;
+	margin-left:1%;
+	margin-right:1%;
+	padding-right:0;
+}
+
+.tokusainen li:first-child {
+	margin-left:1%;
+}
+
+.tokusainen li:last-child {
+	margin-right:1%;
+}
+
+.tokusainen li span.aki{
+	margin-left:0;
+}
+
+}
+ .motimugi_list {
+		display: -webkit-box;
+		display: -ms-flexbox;
+		display: flex;
+		-ms-flex-wrap: wrap;
+		    flex-wrap: wrap;
+		margin-left: -20px;
+		margin-right: -20px;
+		margin-bottom: -40px;
+		width: calc(100% + 40px);
+		margin-bottom: -40px;
+	}
+	.motimugi_list > * {
+		padding-left: 20px;
+		padding-right: 20px;
+		-webkit-box-sizing: border-box;
+		        box-sizing: border-box;
+		width: 25%;
+		margin-bottom: 40px;
+	}
+	.motimugi_list > * {
+		margin-bottom: 40px;
+	}
+@media screen and (max-width: 767px) {
+	.motimugi_list {
+		display: -webkit-box;
+		display: -ms-flexbox;
+		display: flex;
+		-ms-flex-wrap: wrap;
+		    flex-wrap: wrap;
+		margin-left: calc(15% - 10px);
+		margin-right: calc(10% - 10px);
+		margin-bottom: -20px;
+		width: calc(70% + 20px);
+		max-width: 440px;
+	}
+	.motimugi_list > * {
+		padding-left: 10px;
+		padding-right: 10px;
+		-webkit-box-sizing: border-box;
+		        box-sizing: border-box;
+		width: 50%;
+		margin-bottom: 10px;
+	}
+}
+
+.pink_text {
+	color:#F05B76;
+	font-size:130%;
+	font-weight:bold;
+}
+
+.pink_text span {
+	text-decoration:underline;
+}
+
+.motigray {
+	background:#f7f6f6;
+	font-weight:bold;
+	width:auto;
+	font-size:1.2em;
+	margin:30px 0;
+}
+
+.motigray td {
+	vertical-align:middle;
+	padding:10px 10px 10px 20px;
+}
+
+.motigray .aka {
+	color:#ff0000;
+	padding:0;
+}
+
+.motigray .middle {
+	padding:0;
+}
+
+.motigray td.right {
+	padding-left:1em;
+	padding-right:20px;
+}
+
+.motigray .aka p {
+	font-size:1.2em;
+	color:#ff0000;
+	border-bottom:double;
+	line-height:1.7em;
+	border-bottom:double;
+}
+.motigray .aka p span {
+	font-size:1.4em;
+}
+
+div.hako {
+	border:1px solid;
+	padding:20px;
+}
+
+div.hako p {
+	text-indent:-1em;
+	margin-left:1em;
+}
+
+@media screen and (max-width: 767px) {
+.motigray {
+	width:100%;
+	margin:30px 0;
+}
+.motigray .left {
+	width:55%;
+	padding:20px 0 20px 10px;
+}
+
+.motigray td.right {
+	padding-left:5px;
+	padding-right:10px;
+	font-size:0.8em;
+}
+
+.motigray .aka p {
+	line-height:1.5em;
+}
+.motigray .aka p span {
+	font-size:1.4em;
+}
+}
+
+table.kirari {
+	width:600px;
+}
+
+table.kirari td.right {
+	text-align:right;
+	width:25%;
+}
+table.kirari .momo {
+	background:#FEE7DC;
+}
+
+@media screen and (max-width: 767px) {
+table.kirari {
+	width:100%;
+}
+}
+
+table.tukuru {
+	width:100%;
+}
+
+table.tukuru td {
+	width:40%;
+	padding-bottom:20px;
+	vertical-align:top;
+}
+
+table.tukuru td p {
+	text-indent:-2.5rem;
+	margin-left:2.5rem;
+	padding-bottom:0;
+	margin-bottom:0;
+}
+
+table.tukuru td img {
+	width:60%;
+	height:auto;
+	margin:0 20%;
+}
+
+table.tukuru td.left {
+	padding-left:10%;
+}
+
+table.tukuru td.right {
+	padding-right:10%;
+}
+
+table.tukuru span {
+	color:#8CC63F;
+}
+
+table.tukuru .dai {
+	font-size:2rem;
+	vertical-align:-0.2rem;
+	padding-right:0.5rem;
+	line-height:1em;
+}
+@media screen and (max-width: 767px) {
+table.tukuru td {
+	display:block;
+	width:100%;
+}
+}
+
+table.haigo td {
+	vertical-align:middle;
+	text-align:center;
+	white-space: nowrap;
+}
+table.haigo .momo {
+	background:#FEE7DC;
+}
+
+table.haigo .gray {
+	background:#f7f6f6;
+}
+
+.pc_hid{
+    display: none;
+}
+
+.sp_hid{
+	display:inherit;
+}
+
+@media screen and (max-width: 767px) {
+table.haigo {
+	width:100%;
+}
+
+.pc_hid{
+	display: block;
+}
+.sp_hid{
+    display: none;
+}
+}
+
+.motimap img {
+	width:50%;
+	margin:0 25%;
+}
+
+@media screen and (max-width: 767px) {
+.motimap img {
+	width:80%;
+	margin:0 10%;
+}
+}
+
+.motibox{
+ width:100%;
+}
+
+.motibox td{
+	vertical-align:top;
+	47%;
+}
+
+.motibox td.right {
+	padding-right:3%;
+}
+
+.motibox td.left {
+	padding-left:3%;
+}
+
+.motibox td img.siki {
+	width:80px;
+	height:80px;
+}
+
+.motibox td img.gazo {
+	width:80%;
+	height:auto;
+	margin:10px 10%;
+	padding-bottom:50px;
+}
+
+.motibox td .hidari {
+	float:left;
+	clear:left;
+	margin-right:1em;
+}
+
+.motibox td p {
+	padding:0;
+	margin:0;
+}
+
+
+@media screen and (max-width: 767px) {
+.motibox td{
+	width:100%;
+	display:block;
+	padding:0;
+
+}
+
+.motibox td.right {
+	padding-right:0;
+}
+
+.motibox td.left {
+	padding-left:0;
+}
+}
+
+img.moti {
+	float:left;
+	clear:left;
+	width:400px;
+	height:auto;
+	margin-left:300px;
+}
+.mart50px {
+	margin-top:50px;
+}
+
+@media screen and (max-width: 767px) {
+img.moti {
+	width:70%;
+	height:auto;
+	margin:10px 15% 0;
+}
+.motipink {
+	margin-top:0;
+	text-align:center;
+}
+}
+
+table.kikaku {
+	clear:both;
+	border-collapse: collapse;
+	width:70%;
+	margin:10px 15% 30px;
+}
+
+table.kikaku th, table.kikaku td {
+	border:solid 1px #999999;
+	vertical-align:middle;
+	text-align:center;
+	padding: 0.5em 0.85em;
+	line-height:2em;
+}
+
+table.kikaku th {
+	background:#fef8f8;
+}
+
+table.kikaku th.hidari {
+	width:30%;
+}
+
+@media screen and (max-width: 767px) {
+table.kikaku {
+	width:100%;
+	margin:20px 0;
+}
+table.kikaku th.hidari {
+	width:25%;
+}
+}
+
+/*　横並びBOX　*/
+
+
+.iinewrap_t{
+ display:flex;
+}
+
+.iinebox_t{
+ width: 33%;
+ margin: 3%;
+}
+
+.iinebox_t img {
+	text-align: center;
+	margin: 0 auto 15px;
+}
+
+@media screen and (max-width: 767px) {
+.iinewrap_t{
+ display: table;
+}
+.iinebox_t{
+width: 45%;
+margin: 2%;
+display: inline-block;
+vertical-align: text-top;
+}
+}
+
+
+/*　お米の宅配便概要　*/
+
+.hanpukaitb_t tr td:nth-of-type(1) {
+	padding-right: 15px;
+}
+
+@media screen and (max-width: 767px) {
+.hanpukaitb_t tr td:nth-of-type(1) {
+	padding-right: 10px;
+}
+}
+
+/*　ＪＡ全農ひろしまＣＭ　*/
+
+.cmbox_t {
+	display: block;
+	margin: 0 auto;
+}
+
+.cmbox_t li {
+	display: inline-block;
+	width: 44%;
+	margin: 2%;
+}
+
+.cmbox_t p {
+	text-align: center;
+}
+.youtube_t {
+  position: relative;
+  width: 100%;
+  padding-top: 56.25%;
+}
+.youtube_t iframe {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100% !important;
+  height: 100% !important;
+}
+
+
+/*　品質管理室　*/
+
+.hinshitsubox_t {
+	background: #CCCCCC;
+	padding: 40px;
+}
+
+.hinshitsuh5_t {
+	margin: 2.5em auto 7px !important;
+}
+
+.hinshitsuimg_t {
+	float: left;
+	margin: 0 20px 20px 0;
+}
+
+.clear_t {
+	clear: both;
+}
+
+.hinshitsubox2_t   {  
+        border-radius: 10px; 
+        -webkit-border-radius: 10px; 
+        -moz-border-radius: 10px;
+		border: 1px solid #CCC;
+		padding: 15px;
+		margin-bottom: 30px;
+		clear: both;
+    }  
+
+
+/*　ＪＡお米のアンバサダー　*/
+
+.ambassadortxt {
+	max-width: 800px;
+	margin: 0 auto;
+}
+
+
+/*　新着情報バックナンバー　*/
+
+
+dl,dt,dd{
+	margin: 0;
+	padding: 0;
+}
+
+.iinenews_t dl {
+	display: flex;
+	flex-flow: row wrap;
+	width: 100%;
+	margin: 50px auto;
+}
+.iinenews_t dt {
+	flex-basis: 13%;
+	padding: 10px 20px;
+	background-color: #f1f1f1;
+	border-bottom: 1px solid #ccc;
+}
+.iinenews_t dd {
+	flex-basis: 80%;
+	padding: 10px 20px;
+	background-color: #fff;
+	border-bottom: 1px solid #ccc;
+}
+
+.iinenews_t dt:first-child {
+ 	border-top: 1px solid #ccc;
+}
+
+.iinenews_t dd:nth-child(2) {
+ 	border-top: 1px solid #ccc;
+}
+
+@media screen and (max-width: 559px) {
+	.iinenews_t dl {
+		flex-flow: column;
+		width: 100%;
+		padding: 0 20px;
+		border: 0;
+	}
+	.iinenews_t dt, .company dd {
+		padding: 10px;
+		border-bottom: 1px solid #ccc;
+	}
+	.iinenews_t dd:nth-child(2) {
+	 	border-top: 0;
+	}
+}
+
+.musubo {
+	margin: 0 auto;
+}
+
+.musubo li {
+	list-style: none;
+	width: 45%;
+	margin:0 auto 40px;
+	display:inline-block;
+	border: solid 1px #4d4d4d;
+	padding:20px;
+}
+
+.musubo li:nth-child(even) {
+	float:right;
+}
+
+.musubo div.gazo {
+	float:left;
+	clear:left;
+	width:30%;
+	padding:0 2%;
+}
+
+.musubo div.gazo img {
+	width:100%;
+	border: solid #999 1px;
+	margin-bottom:5px;
+}
+
+
+
+@media screen and (max-width: 767px) {
+.musubo li {
+	width: 96%;
+	margin:0 auto 40px;
+	padding:20px 2%;
+}
+
+.musubo div.gazo {
+	width:100%;
+	padding:0;
+}
+
+.musubo div.gazo img {
+	width:60%;
+	margin:5px 20% 10px;
+}
+.musubo div.gazo p {
+	text-align:center;
+	margin-bottom:10px;
+}
+}
+
+
+/*　広島の酒米　*/
+
+
+.sakamaimap_t {
+	background: url(../../iine/sakamai_hiroshima/img/map_back.svg) center no-repeat;
+	background-size: 100%;
+	padding: 30px 0;
+	margin-bottom: 50px;
+	text-align: center;
+}
+
+.sakamaitorikumi01,
+.sakamaitorikumi02,
+.sakamaitorikumi03,
+.sakamaitorikumi04 {
+	padding: 25px 40px;
+	margin-bottom: 40px;
+	overflow: hidden;
+}
+
+.sakamaitorikumi01 img,
+.sakamaitorikumi02 img,
+.sakamaitorikumi03 img,
+.sakamaitorikumi04 img {
+	float: right;
+	width: 400px;
+	margin-left: 30px;
+}
+
+.sakamaitorikumi01 .title,
+.sakamaitorikumi02 .title,
+.sakamaitorikumi03 .title,
+.sakamaitorikumi04 .title {
+	font-size: 130%;
+	font-weight: bold;
+	color: #FFF;
+	display: table;
+	padding: 5px 30px;
+}
+
+.sakamaitorikumi01 .title {
+	background: #F18F4D;
+}
+
+.sakamaitorikumi02 .title {
+	background: #E88FA0;
+}
+
+.sakamaitorikumi03 .title {
+	background: #8EBA69;
+}
+
+.sakamaitorikumi04 .title {
+	background: #F0B44B;
+}
+
+.sakamaitorikumi01 {
+	border: 2px solid #F18F4D;
+}
+
+.sakamaitorikumi02 {
+	border: 2px solid #E88FA0;
+}
+
+.sakamaitorikumi03 {
+	border: 2px solid #8EBA69;
+}
+
+.sakamaitorikumi04 {
+	border: 2px solid #F0B44B;
+}
+
+
+
+.sakamaitorikumi01:after, .sakamaitorikumi01:before,
+.sakamaitorikumi01:after, .sakamaitorikumi01:before,
+.sakamaitorikumi01:after, .sakamaitorikumi01:before,
+.sakamaitorikumi01:after, .sakamaitorikumi01:before {
+    content: "";
+    clear: both;
+    display: block;
+}
+
+@media screen and (max-width: 767px) {
+.sakamaitorikumi01 img,
+.sakamaitorikumi02 img,
+.sakamaitorikumi03 img,
+.sakamaitorikumi04 img {
+	float: none;
+	width: 100%;
+	margin: 0 0 5% 0;
+}
+}
+
+
+
+.sakamaititle02 {
+	color: #5386B9;
+}
+
+.sakamaititle03 {
+	color: #E7838C;
+}
+
+.sakamaititle02,
+.sakamaititle03 {
+	font-size: 120%;
+	border-bottom: 1px solid #333;
+	margin: 20px 0 0;
+	display: table;
+}
+
+.block-grid {
+	width: auto;
+  overflow: hidden;
+  list-style: none;
+  margin: 0 -1% 30px;
+	padding: 0;
+}
+.block-grid p {
+	font-size: 0.8rem !important;
+	line-height: 1.5 !important;
+}
+.block-grid h6 {
+	font-size: 0.8rem !important;
+	margin: 10px auto !important;
+	border-top: 1px solid #708c18;
+	border-bottom: 1px dotted #708c18;
+	padding: 6px 10px;
+}
+.block-grid li {
+	display: inline-block;
+	vertical-align: top;
+  margin: 0 1% 30px;
+  padding: 0;
+  list-style: none;
+}
+	.block-grid-1-2-3 li {
+		width: 48%;
+	}
+@media (min-width: 768px){
+	.block-grid-1-2-3 li {
+		width: 31.3333%;
+	}
+}
+
+/*　贅沢あきろまん　*/
+.akiroman p.title, .akiroman .shita {
+	width:60%;
+	margin:0 20%;
+	overflow:hidden;
+}
+
+@media screen and (max-width: 767px) {
+.akiroman p.title, .akiroman .shita {
+	width:100%;
+	margin:0;
+}
+}
+
+.akiroman .shita p {
+	width:48%;
+	float:left;
+}
+
+.akiroman .shita p:last-child {
+	margin-left:4%;
+}
+
+.akiroman p.dai {
+	font-size:35px;
+	font-weight:bold;
+	color:#C3A346;
+	padding-top:20px;
+	margin-bottom:20px !important;
+}
+@media screen and (max-width: 767px) {
+.akiroman .shita p {
+	width:48%;
+	float:left;
+}
+
+.akiroman .shita p:last-child {
+	margin-left:4%;
+}
+
+.akiroman p.dai {
+	font-size: 1.4rem;
+	margin-bottom:10px !important;
+}
+}
+
+.akiroman hr {
+	width:60%;
+	margin:100px 20%;
+	border:solid 1px #666;
+}
+
+@media screen and (max-width: 767px) {
+.akiroman hr {
+	width:90%;
+	margin:50px 5%;
+}
+}
+
+.akiroman span.dai {
+	font-size:30px;
+	font-weight:bold;
+}
+
+@media screen and (max-width: 767px) {
+.akiroman span.dai {
+	font-size:1.25rem;
+}
+}
+
+.akiroman p.kin {
+	font-size:20px;
+	font-weight:bold;
+	color:#C3A346;
+}
+
+@media screen and (max-width: 767px) {
+.akiroman p.kin {
+	font-size:1.15rem;
+}
+}
+
+.akiroman p.kaihatusya {
+	width:40%;
+	margin:50px 30% 0;
+}
+
+@media screen and (max-width: 767px) {
+.akiroman p.kaihatusya {
+	width:100%;
+	margin:30px 0 0;
+}
+}
+
+.akiroman p.chuu {
+	font-size:25px;
+	font-weight:bold;
+	color:#C3A346;
+	padding-top:20px;
+	margin-bottom:20px !important;
+}
+
+@media screen and (max-width: 767px) {
+.akiroman p.chuu {
+	font-size: 1.1rem;
+	margin-bottom:10px !important;
+}
+}
+
+.akiroman .kaihatulogo {
+	width:60%;
+	margin:0 20% 50px;
+	overflow:hidden;
+}
+
+.akiroman .kaihatulogo p.img {
+	width:20%;
+	float:left;
+	padding-right:5%;
+}
+
+.akiroman .kaihatulogo p.memo {
+	width:75%;
+	float:left;
+	padding-top:1em;
+}
+
+@media screen and (max-width: 767px) {
+.akiroman .kaihatulogo {
+	width:100%;
+	margin:0 0 30px;
+}
+
+.akiroman .kaihatulogo p.img {
+	width:23%;
+	float:left;
+	padding-right:2%;
+}
+
+.akiroman .kaihatulogo p.memo {
+	width:75%;
+	float:left;
+	padding-top:0;
+}
+}
+
+.akiroman .half {
+	width:50%;
+	margin:0 25%;
+}
+
+@media screen and (max-width: 767px) {
+.akiroman .half {
+	width:100%;
+	margin:0;
+}
+}
+
+.akiroman .arrow {
+	width:4%;
+	margin:40px 48%;
+}
+
+@media screen and (max-width: 767px) {
+.akiroman .arrow {
+	width:10%;
+	margin:20px 45%;
+}
+}
+
+.akiroman .zeitaku {
+	width:60%;
+	margin:0 20% 80px;
+	border-collapse: collapse;
+}
+.akiroman .zeitaku td {
+	vertical-align:middle;
+	background:#C3A346;
+	border-radius:8px;
+	width:42%;
+	color:#FFF;
+	font-weight:bold;
+	font-size:20px;
+	padding:15px 2%;
+	text-align:center;
+}
+.akiroman .zeitaku td.naka {
+	width:8%;
+	background:none;
+	padding:0;
+}
+
+@media screen and (max-width: 767px) {
+.akiroman .zeitaku {
+	width:100%;
+	margin:0 0 40px;
+}
+.akiroman .zeitaku td {
+	width:44%;
+	font-size:0.9rem;
+	padding:15px 2%;
+}
+.akiroman .zeitaku td.naka {
+	width:4%;
+}
+}
+
+.takuhaibincontact {
+	display: table !important;
+	margin: 50px 0;
+	border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+	border: 2px solid #EFEFEF;
+	padding: 30px 50px;
+}
+
+@media screen and (max-width: 767px) {
+.takuhaibincontact {
+	padding: 5%;
+}
+}

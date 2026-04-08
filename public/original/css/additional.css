@@ -1,0 +1,290 @@
+/*********************************************************************
+reset
+*********************************************************************/
+.modal-content {
+  padding-bottom: 40px;
+}
+
+.modal-container {
+  width: 1400px;
+  padding-left: 0;
+  padding-right: 0;
+}
+@media screen and (max-width: 1400px) {
+  .modal-container {
+    width: 70vw;
+  }
+}
+@media screen and (max-width: 768px) {
+  .modal-container {
+    width: 90vw;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .modal-content__ttl {
+    font-size: 22px;
+    line-height: 1.6;
+    padding-bottom: 16px;
+  }
+}
+.modal-content__ttl br {
+  display: none;
+}
+@media screen and (max-width: 768px) {
+  .modal-content__ttl br {
+    display: block;
+  }
+}
+
+/*********************************************************************
+slick.js
+*********************************************************************/
+.slider {
+  padding: 0;
+  margin: 0;
+}
+
+/*--------------------------------------------------------------------
+slick-theme.css
+--------------------------------------------------------------------*/
+.slick-loading .slick-list {
+  background: #fff url("../img/common/ajax-loader.gif") center center no-repeat;
+}
+
+.slick-prev:before,
+.slick-next:before {
+  font-family: initial;
+  font-size: 0;
+}
+
+.slick-dots li button:before {
+  font-family: initial;
+  font-size: 0;
+}
+
+.slick-prev:before {
+  content: none;
+}
+
+[dir=rtl] .slick-prev:before {
+  content: none;
+}
+
+.slick-next:before {
+  content: none;
+}
+
+[dir=rtl] .slick-next:before {
+  content: none;
+}
+
+/*--------------------------------------------------------------------
+slick.css
+--------------------------------------------------------------------*/
+.slick-track {
+  display: flex;
+}
+
+.slick-track:before,
+.slick-track:after {
+  display: none;
+}
+
+.slick-slide > * {
+  height: 100%;
+}
+
+/*--------------------------------------------------------------------
+Arrows
+--------------------------------------------------------------------*/
+.slick-prev,
+.slick-next {
+  height: 100%;
+  width: 20px;
+  background-size: 19px 33px;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+@media screen and (max-width: 1400px) {
+  .slick-prev,
+.slick-next {
+    top: 30%;
+  }
+}
+@media screen and (max-width: 768px) {
+  .slick-prev,
+.slick-next {
+    top: 25%;
+  }
+}
+
+.slick-prev:hover,
+.slick-prev:focus,
+.slick-next:hover,
+.slick-next:focus {
+  outline: none;
+  background-size: 19px 33px;
+  background-repeat: no-repeat;
+  background-position: center center;
+  transition-duration: 0.3s;
+}
+
+.slick-prev {
+  left: -30px;
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10.659' height='18.273'%3E%3Cpath fill='%23707070' d='M0 9.136A1.516 1.516 0 0 1 .446 8.06L8.059.446A1.523 1.523 0 0 1 10.213 2.6L3.674 9.136l6.538 6.538a1.523 1.523 0 0 1-2.153 2.153L.446 10.214A1.518 1.518 0 0 1 0 9.136Z'/%3E%3C/svg%3E");
+}
+[dir=rtl] .slick-prev {
+  right: -30px;
+}
+@media screen and (max-width: 768px) {
+  .slick-prev {
+    left: -15px;
+  }
+  [dir=rtl] .slick-prev {
+    right: -15px;
+  }
+}
+.slick-prev:hover, .slick-prev:focus {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10.659' height='18.273'%3E%3Cpath fill='%23419628' d='M0 9.136A1.516 1.516 0 0 1 .446 8.06L8.059.446A1.523 1.523 0 0 1 10.213 2.6L3.674 9.136l6.538 6.538a1.523 1.523 0 0 1-2.153 2.153L.446 10.214A1.518 1.518 0 0 1 0 9.136Z'/%3E%3C/svg%3E");
+}
+
+.slick-next {
+  right: -30px;
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10.659' height='18.273'%3E%3Cpath fill='%23707070' d='M10.659 9.137a1.516 1.516 0 0 1-.446 1.076L2.6 17.827a1.523 1.523 0 0 1-2.154-2.154l6.539-6.536L.447 2.599A1.523 1.523 0 0 1 2.6.446l7.613 7.613a1.518 1.518 0 0 1 .446 1.078Z'/%3E%3C/svg%3E");
+}
+[dir=rtl] .slick-next {
+  left: -30px;
+}
+@media screen and (max-width: 768px) {
+  .slick-next {
+    right: -15px;
+  }
+  [dir=rtl] .slick-next {
+    left: -15px;
+  }
+}
+.slick-next:hover, .slick-next:focus {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10.659' height='18.273'%3E%3Cpath fill='%23419628' d='M10.659 9.137a1.516 1.516 0 0 1-.446 1.076L2.6 17.827a1.523 1.523 0 0 1-2.154-2.154l6.539-6.536L.447 2.599A1.523 1.523 0 0 1 2.6.446l7.613 7.613a1.518 1.518 0 0 1 .446 1.078Z'/%3E%3C/svg%3E");
+}
+
+/*--------------------------------------------------------------------
+modal-slick{
+--------------------------------------------------------------------*/
+.modal-content__wrapper {
+  padding-left: 5.7142857143%;
+  padding-right: 5.7142857143%;
+}
+
+.slick-modal {
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+}
+.slick-modal li {
+  width: 31.4285714286%;
+}
+@media screen and (max-width: 1400px) {
+  .slick-modal li {
+    width: 100%;
+  }
+}
+.slick-modal dl {
+  text-align: left;
+  letter-spacing: 0.05em;
+  padding: 0 7.1428571429%;
+}
+.slick-modal dl dt {
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+@media screen and (max-width: 768px) {
+  .slick-modal dl dt {
+    font-size: 18px;
+    line-height: 1.5;
+    margin-bottom: 10px;
+  }
+}
+.slick-modal dl dt span {
+  color: #6cb951;
+  margin-right: 5px;
+}
+.slick-modal dl dd {
+  margin-bottom: 20px;
+}
+.slick-modal dl dd.slick-modal__text {
+  min-height: 150px;
+}
+@media screen and (max-width: 1400px) {
+  .slick-modal dl dd.slick-modal__text {
+    min-height: auto;
+  }
+}
+.slick-modal dl dd figure img {
+  border: none;
+  vertical-align: bottom;
+  max-width: 100%;
+  height: auto;
+  width: auto;
+  min-width: 1px;
+}
+.slick-modal dl dd p {
+  font-size: 16px;
+}
+@media screen and (max-width: 768px) {
+  .slick-modal dl dd p {
+    font-size: 14px;
+    line-height: 1.5;
+  }
+}
+.slick-modal dl dd p.modal-address {
+  line-height: 1.6;
+}
+@media screen and (max-width: 768px) {
+  .slick-modal dl dd p.modal-address {
+    line-height: 1.5;
+  }
+}
+.slick-modal dl dd p.modal-tel {
+  font-size: 24px;
+}
+@media screen and (max-width: 768px) {
+  .slick-modal dl dd p.modal-tel {
+    font-size: 22px;
+  }
+}
+.slick-modal .modal-button {
+  margin: 0 auto;
+  max-width: 220px;
+}
+.slick-modal .modal-button a {
+  display: block;
+  width: 100%;
+  height: 100%;
+  padding: 15px 0;
+  text-align: center;
+  font-size: 15px;
+  letter-spacing: 0.05em;
+  text-indent: 0.05em;
+  color: #000000;
+  background-color: #F7F7F7;
+  border: 1px solid #707070;
+  border-radius: 60px;
+  background-size: 14px 14px;
+  background-repeat: no-repeat;
+  background-position: 90% center;
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14.067' height='14.067'%3E%3Cpath d='M8.792 0a.879.879 0 0 0 0 1.758h2.272l-5.53 5.534a.88.88 0 0 0 1.244 1.245L12.309 3v2.275a.879.879 0 1 0 1.758 0V.879A.878.878 0 0 0 13.188 0ZM2.2.879A2.2 2.2 0 0 0 0 3.077v8.792a2.2 2.2 0 0 0 2.2 2.2h8.79a2.2 2.2 0 0 0 2.2-2.2V8.792a.879.879 0 0 0-1.758 0v3.077a.441.441 0 0 1-.44.44H2.2a.441.441 0 0 1-.44-.44V3.077a.441.441 0 0 1 .44-.44h3.075a.879.879 0 1 0 0-1.758Z'/%3E%3C/svg%3E");
+  padding-right: 10px;
+}
+@media screen and (max-width: 768px) {
+  .slick-modal .modal-button a {
+    font-size: 13px;
+    padding: 10px 0;
+  }
+}
+.slick-modal .modal-button a:hover, .slick-modal .modal-button a:active, .slick-modal .modal-button a:focus-visible {
+  transition-duration: 0.3s;
+  opacity: 0.7;
+}

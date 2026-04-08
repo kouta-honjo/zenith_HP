@@ -1,0 +1,713 @@
+/**************************
+Compass Text Replacement
+*/
+/**************************
+Inline List
+*/
+/**************************
+Inline Block List
+*/
+/**************************
+horizontal-list
+*/
+/**************************
+Bullets
+*/
+/* simple clearfix */
+/**************************
+@mixin for sprite
+*/
+.pc_hid{
+    display: none;
+}
+
+.sp_hid{
+	display:inherit;
+}
+
+@media screen and (max-width:767px) {
+.pc_hid{
+	display: block;
+}
+
+.sp_hid{
+    display: none;
+}
+}
+
+.jigyogaiyo p.img {
+	float:right;
+	clear:right;
+	width:41%;
+}
+
+.jigyogaiyo p.img img {
+	width:100%;
+	height:auto;
+}
+
+.jigyogaiyo table {
+	width:56%;
+	clear:left;
+}
+
+.jigyogaiyo table td {
+	width:75%;
+}
+
+@media screen and (max-width:767px) {
+.jigyogaiyo p.img {
+	width:100%;
+}
+
+.jigyogaiyo table {
+	width:100%;
+}
+}
+
+.jigyonaiyo ul.naiyo {
+	margin:0 auto;
+    display:-webkit-box;
+    display:-moz-box;
+    display:-ms-flexbox;
+    display:-webkit-flex;
+    display:-moz-flex;
+    display:flex;
+    -webkit-box-lines:multiple;
+    -moz-box-lines:multiple;
+    -webkit-flex-wrap:wrap;
+    -moz-flex-wrap:wrap;
+    -ms-flex-wrap:wrap;
+    flex-wrap:wrap;
+    width:100%;
+}
+ 
+.jigyonaiyo ul.naiyo li {
+	margin:20px 2% 20px 0;
+	border:1px solid #999;
+	width:32%;
+	box-sizing: border-box;
+	padding:20px 20px 15px;
+}
+
+.jigyonaiyo ul.naiyo li:nth-of-type(3n){
+	margin-right:0;
+}
+
+.jigyonaiyo ul.naiyo li img {
+	width:100%;
+	height:auto;
+}
+
+.jigyonaiyo ul.naiyo li p {
+	margin:10px auto;
+}
+
+@media screen and (max-width:767px) {
+.jigyonaiyo ul.naiyo li {
+	width:100%;
+	margin:15px 0;
+}
+
+.jigyonaiyo ul.naiyo li p.sita {
+	margin:10px auto 0;
+}
+}
+
+p.sosikizu{
+	width:90%;
+	margin:0 5%;
+}
+
+p.sosikizu img {
+	width:100%;
+	height:auto;
+}
+
+
+@media screen and (max-width:767px) {
+p.sosikizu {
+	width:100%;
+	margin:0;
+}
+}
+
+div.chikubox {
+	display: flex;
+}
+p.chiku {
+	margin:50px 10%;
+	width:50%;
+	float:left;
+	clear:left;
+}
+
+p.chiku img {
+	width:100%;
+}
+
+@media screen and (max-width:767px) {
+div.chikubox {
+	display:block;
+}
+	
+p.chiku {
+	width:100%;
+	margin:0 0 0;
+	float:none;
+}
+}
+
+div.chikulist {
+	width:40%;
+	margin:50px 0 0;
+}
+
+div.chikulist ul {
+	margin-left:25px;
+}
+
+div.chikulist li {
+	margin:5px 0;
+}
+
+@media screen and (max-width:767px) {
+div.chikulist {
+	width:100%;
+	margin:30px 0;
+}
+div.chikulist ul {
+	margin-left:0;
+	overflow:hidden;
+}
+
+div.chikulist li {
+	width:48%;
+	float:left;
+	margin:5px 1%;
+}
+}
+
+p.enkakunen {
+	font-size: 1.5rem;
+	font-weight:bold;
+	color:#93b81f;
+	margin-bottom:0 !important;
+}
+
+.list_table {
+	width:95%;
+	margin-left:5%;
+}
+
+.list_table,
+.list_table > dt,
+.list_table > dd {
+    box-sizing: border-box;
+}
+
+.list_table > dt
+.list_table > dd {
+    margin: 0px;
+}
+
+.list_table > dt {
+	border-left:solid 2px #93b81f;
+	padding:10px 0 10px 3em;
+}
+
+.list_table > dd::before {
+	content: "－　";
+}
+
+.list_table {
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.list_table > dt,
+.list_table > dd {
+	display: block;
+	flex-direction: column;
+	justify-content: center;
+}
+
+.list_table > dt {
+	width: 10%;
+	font-size: 1.125rem;
+	font-weight:bold;
+	color:#93b81f;
+}
+
+.list_table > dd {
+	width: 90%;
+	text-indent:-2em;
+	padding:10px 0 10px 2em;
+}
+
+@media screen and (max-width:767px) {
+p.enkakunen {
+	font-size: 1.25rem;
+}
+
+.list_table {
+	width:98%;
+	margin-left:2%;
+}
+
+.list_table > dt {
+	padding:10px 0 10px 10px;
+	font-size: 1rem;
+}
+
+.list_table > dd::before {
+	content: "－　";
+}
+
+.list_table > dt {
+	width: 17%;
+}
+
+.list_table > dd {
+	width: 83%;
+	text-indent:-2em;
+	padding:10px 0 10px 2em;
+}
+}
+
+.kenichiran .chizu {
+	width:50%;
+	margin:0 20%;
+}
+
+.kenichiran .chizu img {
+	width:100%;
+	height:auto;
+}
+
+.kenichiran table td {
+	vertical-align:middle;
+}
+
+.kenichiran table td.naka {
+	text-align:center;
+}
+
+.kenichiran table td span {
+	white-space: nowrap;
+}
+
+@media screen and (max-width:767px) {
+.kenichiran .chizu {
+	width:100%;
+	margin:0;
+}
+}
+
+/*　採用情報　*/
+
+.recruitbox_t {
+	text-align: center;
+}
+
+@media screen and (max-width: 767px) {
+.recruitbox_t {
+	text-align: left;
+	margin-top: 8%;
+}
+}
+
+.recruitbox2_t {
+	width: 800px;
+	max-width: 90%;
+	text-align: center;
+	border: 2px solid #EB4A39;
+	margin: 60px auto;
+	padding: 20px;
+	border-radius: 20px;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px; 
+}
+
+.recruitbox2_t p {
+	margin: 0 !important;
+}
+
+@media screen and (max-width: 767px) {
+.recruitbox2_t {
+	margin: 8% auto;
+	width: auto;
+}
+}
+
+.recruit_t01 {
+	font-weight: bold;
+	color: #EB4C3B;
+	font-size: 120%;
+}
+
+
+.recruitnews {
+	width: 844px !important;
+	margin: 0 auto;
+}
+
+@media screen and (max-width: 767px) {
+.recruitnews {
+	width: 96% !important;
+	margin: 0 2% !important;
+}
+}
+
+
+
+/*　オフィシャルSNSのご紹介　*/
+
+.snsbox_t {
+	width: 1000px;
+	margin: 0 auto;
+}
+
+.snsbox_t2 {
+	width: 950px;
+	margin: 0 auto;
+}
+
+
+.fb-page {
+	max-width: 100%;
+}
+
+.snsbox_t {
+	display: table;
+}
+
+.snsbox_t section {
+	display: inline-block;
+	width: 44%;
+	margin: 0 3%;
+    vertical-align: text-top;
+}
+
+@media screen and (max-width: 767px) {
+.snsbox_t,
+.snsbox_t2 {
+	width: 100%;
+}
+
+.snsbox_t section {
+	display: block;
+	width: 100%;
+	margin: 0;
+}
+}
+
+
+
+.snsbtn,
+a.snsbtn,
+button.snsbtn {
+  font-weight: 700;
+  line-height: 1.5;
+  position: relative;
+  display: inline-block;
+  padding: 1rem 4rem;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  text-align: center;
+  vertical-align: middle;
+  text-decoration: none;
+  letter-spacing: 0.1em;
+  color: #212529;
+	border-radius: 100vh;
+    -webkit-border-radius: 100vh;
+    -moz-border-radius: 100vh;
+}
+
+a.btn-gradient {
+  font-weight: normal;
+
+  color: #fff;
+  border-radius: 0;
+  background-image: -webkit-gradient(
+    linear,
+    left top,
+    right top,
+    color-stop(40%, #ff3cac),
+    to(#562b7c)
+  );
+  background-image: -webkit-linear-gradient(left, #ff3cac 40%, #562b7c 100%);
+  background-image: linear-gradient(90deg, #ff3cac 40%, #562b7c 100%);
+}
+
+a.btn-gradient:after {
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 100%;
+
+  content: "";
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+
+  background-image: -webkit-gradient(
+    linear,
+    left top,
+    right top,
+    from(#ff3cac),
+    color-stop(#562b7c),
+    to(#2b86c5)
+  );
+
+  background-image: -webkit-linear-gradient(left, #ff3cac, #562b7c, #2b86c5);
+
+  background-image: linear-gradient(90deg, #ff3cac, #562b7c, #2b86c5);
+}
+
+a.btn-gradient span {
+  position: relative;
+  z-index: 1;
+}
+
+a.btn-gradient:hover {
+  color: #fff;
+}
+
+a.btn-gradient:hover:after {
+  opacity: 0;
+}
+
+.snsbtn {
+	border-radius: 100vh;
+    -webkit-border-radius: 100vh;
+    -moz-border-radius: 100vh; 
+}
+
+.snscontact_t {
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+
+.linebutton, .igbutton, .twbutton {
+	display: inline-block;
+	-webkit-box-align: center;
+	    -ms-flex-align: center;
+	        align-items: center;
+	text-decoration: none;
+	text-align: center;
+	line-height: 1;
+	-webkit-box-sizing: border-box;
+	        box-sizing: border-box;
+	position: relative;
+	top: 0;
+	left: 0;
+	-webkit-transition: background-color 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+	-o-transition: background-color 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+	transition: background-color 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+	box-sizing: border-box;
+	padding: 20px 50px 20px 65px;
+	border: 3px solid #EBEBEB;
+}
+
+.igbutton::before {
+	content: "";
+	display: block;
+	background: url(../../sns/img/ig.png) 0 0 no-repeat transparent;
+	background-size: 30px 30px;
+	width: 30px;
+	height: 30px;
+	margin-top: -1.9%;
+	position: absolute;
+	/*top: 50%;*/
+	left: 25px;
+}
+
+.igbutton:hover {
+	background-color: #EBEBEB;
+	text-decoration: none;
+}
+
+
+.linebutton::before {
+	content: "";
+	display: block;
+	background: url(../../sns/img/line.png) 0 0 no-repeat transparent;
+	background-size: 30px 30px;
+	width: 30px;
+	height: 30px;
+	margin-top: -1.9%;
+	position: absolute;
+	/*top: 50%;*/
+	left: 25px;
+}
+
+.linebutton:hover {
+	background-color: #EBEBEB;
+	text-decoration: none;
+}
+
+
+.twbutton::before {
+	content: "";
+	display: block;
+	background: url(../../sns/img/X.png) 0 0 no-repeat transparent;
+	background-size: 30px 30px;
+	width: 30px;
+	height: 30px;
+	margin-top: -1.9%;
+	position: absolute;
+	/*top: 50%;*/
+	left: 25px;
+}
+
+.twbutton:hover {
+	background-color: #EBEBEB;
+	text-decoration: none;
+}
+
+.snsyoutube {
+	overflow: hidden;
+	clear: both;
+	margin-bottom: 20px;
+}
+
+.snsyoutube img {
+	float: left;
+	margin-right: 30px;
+}
+
+@media screen and (max-width: 767px) {
+.snsyoutube img {
+	float: none;
+	text-align: center;
+	margin: 0 auto;
+}
+}
+
+
+
+
+/*　組織図　*/
+
+p.sosikizu {
+	width:82%;
+	margin:0 9% 50px;
+}
+
+p.sosikizu img {
+	width:100%;
+	height:auto;
+}
+
+h3#ichiran {
+  display: block;
+  padding-top:40px;
+  content: "";
+}
+
+@media screen and (max-width: 767px) {
+p.sosikizu {
+	width:100%;
+	margin:0 0 50px;
+}
+}
+.soshikizu th p.left {
+	text-align:left;
+	font-weight:bold;
+	background:#fef8f8;
+}
+
+.soshikizu td span.gyo {
+	white-space: nowrap;
+}
+
+.soshikizu p.onaji {
+	text-align:center;
+}
+
+
+
+/*　営農通信　*/
+
+/*.einoumusubo div {
+	display: inline-block;
+	vertical-align: text-top;
+}*/
+
+.einoumusubo div {
+	margin: 0 auto;
+	text-align: center;
+	margin-bottom: 15px;
+}
+
+.main_content .einoumusubo img {
+	display: inline;
+}
+
+
+/*　事業内容　*/
+.jigyoulist {
+	margin-bottom: 10px;
+	margin-left: 10px;
+}
+.jigyoulist li {
+	width: 35%;
+	display: inline-block;
+	margin-bottom: 0;
+}
+.jigyoulist .fonts {
+	font-size: 85%;
+}
+
+.jigyoulist2 {
+	margin-bottom: 10px;
+	margin-left: 10px;
+}
+.jigyoulist2 li {
+	width: 40%;
+	display: inline-block;
+	margin-bottom: 0;
+}
+.jigyoulist2 .fonts {
+	font-size: 85%;
+}
+
+@media screen and (max-width: 767px) {
+.jigyoulist , .jigyoulist2 {
+	margin-bottom: 10px;
+}
+.jigyoulist li , .jigyoulist2 li {
+	width: 100%;
+	margin-bottom: 3%;
+}
+.jigyoulist .fonts , .jigyoulist2 .fonts {
+	font-size: 100%;
+}
+}
+
+/*　 事業内容メニュー　*/
+
+.jigyoumenu {
+	margin:0;
+}
+
+.jigyoumenu p {
+	width: 25%;
+	padding:0 10px;
+	display: inline-grid;
+}
+
+@media screen and (max-width: 767px) {
+.jigyoumenu p {
+	width: 90%;
+	margin: 0 5%;
+}
+
+}
