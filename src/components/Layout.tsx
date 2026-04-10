@@ -62,15 +62,14 @@ function DesktopDropdown({ item }: { item: typeof navItems[number] }) {
         <div className="absolute top-full left-1/2 -translate-x-1/2 pt-2 z-50">
           <div className="bg-white rounded-xl shadow-xl border border-gray-100 py-2 min-w-[220px]">
             {item.children.map((child) => (
-              <Link
+              <span
                 key={child.path}
-                to={child.path}
-                onClick={() => setOpen(false)}
-                className="flex items-center gap-2 px-5 py-3 text-sm text-gray-700 hover:bg-green-50 hover:text-green-700 transition-colors"
+                className="flex items-center gap-2 px-5 py-3 text-sm text-gray-400 cursor-default"
               >
-                <ChevronRight className="w-3.5 h-3.5 text-green-500" />
+                <ChevronRight className="w-3.5 h-3.5 text-gray-300" />
                 {child.label}
-              </Link>
+                <span className="ml-auto text-[10px] text-gray-300">準備中</span>
+              </span>
             ))}
           </div>
         </div>
@@ -154,14 +153,14 @@ export default function Layout() {
                   {mobileExpanded === item.label && (
                     <div className="pb-3 pl-4 flex flex-col gap-1">
                       {item.children.map((child) => (
-                        <Link
+                        <span
                           key={child.path}
-                          to={child.path}
-                          className="flex items-center gap-2 py-2.5 text-sm text-gray-600 hover:text-green-600"
+                          className="flex items-center gap-2 py-2.5 text-sm text-gray-400 cursor-default"
                         >
-                          <ChevronRight className="w-3.5 h-3.5 text-green-500" />
+                          <ChevronRight className="w-3.5 h-3.5 text-gray-300" />
                           {child.label}
-                        </Link>
+                          <span className="ml-auto text-[10px] text-gray-300">準備中</span>
+                        </span>
                       ))}
                     </div>
                   )}
@@ -201,11 +200,11 @@ export default function Layout() {
             </div>
             <div>
               <h3 className="font-bold mb-4 text-green-400">CONTENTS</h3>
-              <ul className="space-y-2 text-sm text-gray-300">
+              <ul className="space-y-2 text-sm text-gray-500">
                 {navItems.flatMap((item) =>
                   item.children.map((child) => (
                     <li key={child.path}>
-                      <Link to={child.path} className="hover:text-white transition-colors">{child.label}</Link>
+                      <span className="cursor-default">{child.label}</span>
                     </li>
                   ))
                 )}

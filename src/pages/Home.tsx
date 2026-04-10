@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
 import { motion } from 'motion/react';
 import { useState, useEffect, useCallback } from 'react';
@@ -134,9 +133,9 @@ function BoxCard({ to, href, img, cat, catColor, title, square, objectPos, class
     );
   }
   return (
-    <Link to={to!} className={sharedClass}>
+    <div className={sharedClass + ' cursor-default'}>
       {inner}
-    </Link>
+    </div>
   );
 }
 
